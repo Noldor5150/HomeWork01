@@ -7,30 +7,25 @@ namespace HomeWork01
     {
         static void Main(string[] args)
         {
-            string digit = Console.ReadLine();
-            Console.WriteLine(digit);
-            Console.WriteLine(isStringANumber(digit));
+            int input = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine(numberToWord(input));
         }
-        static bool isStringANumber(string possibleNumber)
+
+        static string numberToWord(int number)
         {
-            char[] rightNumbers = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
-            List<char> listOfPossibleNumbers = possibleNumber.ToList();
-
-            if (listOfPossibleNumbers[0] == '-')
+            string result = "";
+            if (number < 0)
             {
-                listOfPossibleNumbers.RemoveAt(0);
+                result = "minus ";
+                number = -number;
             }
-                
-            foreach (char posibleNumber in listOfPossibleNumbers)
+            List<string> numbersList = new List<string>
             {
-                foreach (char rightNumber in rightNumbers)
-                {
-                    if (posibleNumber != rightNumber)
-                        return false;
-                }
-            }
-
-            return true;
+                "nulis","vienas","du","trys","keturi","penki","sheshi","septyni","ashtuoni","devyni","deshimt",
+                "vienuolika","dvylika", "trylika", "keturiolika","penkiolika","shehsiolika","septyniolika", 
+                "ashtuomiolika","devyniolika"
+            };
+            return result += numbersList[number];
         }
     }
 }
