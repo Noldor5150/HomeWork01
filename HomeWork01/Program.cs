@@ -1,22 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
 namespace HomeWork01
 {
     class Program
     {
         static void Main(string[] args)
         {
-
-            int input = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine(numberInRange(input,-9,9));
-            
+            string digit = Console.ReadLine();
+            Console.WriteLine(digit);
+            Console.WriteLine(isStringANumber(digit));
         }
-
-        static bool numberInRange(int inputValue,int bottomLimit, int upperLimit)
+        static bool isStringANumber(string possibleNumber)
         {
-            return inputValue <= upperLimit && inputValue >= bottomLimit;
+            char[] rightNumbers = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+            List<char> listOfPossibleNumbers = possibleNumber.ToList();
+
+            if (listOfPossibleNumbers[0] == '-')
+            {
+                listOfPossibleNumbers.RemoveAt(0);
+            }
+                
+            foreach (char posibleNumber in listOfPossibleNumbers)
+            {
+                foreach (char rightNumber in rightNumbers)
+                {
+                    if (posibleNumber != rightNumber)
+                        return false;
+                }
+            }
+
+            return true;
         }
     }
 }
