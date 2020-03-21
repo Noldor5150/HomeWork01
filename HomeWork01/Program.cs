@@ -8,7 +8,7 @@ namespace HomeWork01
     {
         static void Main(string[] args)
         {
-
+            
             string digit = Console.ReadLine();
             Console.WriteLine(digit);
             Console.WriteLine(stringIsANumber(digit));
